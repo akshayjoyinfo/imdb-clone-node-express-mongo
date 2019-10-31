@@ -1,0 +1,7 @@
+https://github.com/howardmann/clean-node
+https://github.com/dev-mastery/comments-api
+https://github.com/cornflourblue/node-mongo-registration-login-api
+https://github.com/linnovate/mean/tree/master/src
+
+
+https://flaviocopes.com/express-https-self-signed-certificate/

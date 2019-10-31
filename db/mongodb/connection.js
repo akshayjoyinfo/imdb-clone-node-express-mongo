@@ -2,8 +2,6 @@ const config = require('../../config')
 const mongoose = require('mongoose');
 const debug = require('debug')('imdb-clone-api:IMDB-Mongo-Connection');
 
-debug(`${JSON.stringify(config)}`);
-
 // Use ES6 Promises for mongoose
 mongoose.Promise = global.Promise;
 mongoose.set('useNewUrlParser', true);
@@ -24,7 +22,7 @@ if (env === 'production') {
 
 // Signal connection
 mongoose.connection.once('open', function () {
-    debug('IMDB Mongo Database::Connection has been made');
+    debug('Connection has been made sucessfully');
 }).on('error', function (error) {
     debug('IMDB Mongo Database::Connect error', error);
 }).on('disconnected', function () {
