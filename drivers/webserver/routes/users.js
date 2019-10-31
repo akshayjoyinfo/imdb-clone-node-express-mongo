@@ -12,7 +12,8 @@ users.create =  (req, res, next) => {
       .createUser(req.body)
       .then(data => {
         debug('Created User '+ data.firstname);
-        res.send(data);
+        const { hash, ...userWithoutHash } = data;
+        res.send(userWithoutHash);
       })
       .catch(next);
     }
