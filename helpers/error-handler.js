@@ -1,8 +1,9 @@
 const debug =require('debug')('imdb-clone-api:ErrorHandler-Middleware');
 
-module.exports = errorHandler;
+export default errorHandler;
 
-function errorHandler(err, req, res, next) {    
+// eslint-disable-next-line no-unused-vars
+function errorHandler(err, req, res, next) {
     if (typeof (err) === 'string') {
         // custom application error
         return res.status(400).json({ message: err });
@@ -10,6 +11,7 @@ function errorHandler(err, req, res, next) {
 
     if (err.name === 'ValidationError') {
         // mongoose validation error
+        debug(String(err));
         return res.status(400).json({ error: 'ValidationError',message: err.details.map(el => el.message) });
     }
 

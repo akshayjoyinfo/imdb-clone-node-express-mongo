@@ -14,7 +14,7 @@ if (env === 'production') {
   const password = config.mongo.MONGO_PW
   mongoose.connect(`mongodb://${username}:${password}@ds161630.mlab.com:61630/${config.mongo.MONGO_DB}`)
 } else {
-    
+
     mongoose.connect(`mongodb://${config.mongo.MONGO_HOST}:${config.mongo.MONGO_PORT}/${config.mongo.MONGO_DB}`), {
         useMongoClient: true,
     };

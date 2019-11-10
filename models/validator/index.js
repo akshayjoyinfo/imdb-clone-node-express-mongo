@@ -1,6 +1,5 @@
 
 const Joi = require('@hapi/joi')
-const debug = require('debug')('imdb-clone-api:ModelValidation')
 
 const validator = (schema) =>
   (payload) => {

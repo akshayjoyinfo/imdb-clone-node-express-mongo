@@ -12,18 +12,18 @@ module.exports = {
       issuer:  $Options.issuer,
       subject:  $Options.subject,
       audience:  $Options.audience,
-      expiresIn:  "1m",    // 30 days validity
-      algorithm:  "RS256"    
+      expiresIn:  "15m",    // 30 days validity
+      algorithm:  "RS256"
   };
   return jwt.sign(payload, privateKEY, signOptions);
 },
 verify: (token, $Option) => {
- 
+
   var verifyOptions = {
       issuer:  $Option.issuer,
       subject:  $Option.subject,
       audience:  $Option.audience,
-      expiresIn:  "1m",
+      expiresIn:  "15m",
       algorithm:  ["RS256"]
   };
    try{

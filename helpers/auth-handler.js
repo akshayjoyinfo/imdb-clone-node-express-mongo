@@ -1,7 +1,6 @@
 const expressJwt = require('express-jwt');
 const fs= require('fs');
 const path = require('path');
-const debug = require('debug')('imdb-clone-api:AuthHandler');
 const usersDb = require("../data-access/users-db");
 
 var publicKEY  = fs.readFileSync(path.join(__dirname,'../auth-keys/public.key'), 'utf8');
@@ -13,6 +12,7 @@ function imdbAuthenticate(){
     return expressJwt({ secret:publicKEY, isRevoked }).unless({
         path: [
             // public routes that don't require authentication
+            '/',
             '/users',
             '/auth'
         ]
@@ -26,4 +26,4 @@ function isRevoked(req, payload, done) {
     }
 
     done();
-};
+}

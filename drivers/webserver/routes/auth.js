@@ -1,21 +1,21 @@
-const usersDb = require("../../../data-access/users-db");
-const jwtInfo = require('../../../auth-keys/jwt-info');
-const jwtHandler = require('../../../helpers/jwt-handler');
-const debug = require('debug')('imdb-clone-api:authMiddleware')
+/* eslint-disable no-unused-vars */
+import { findUser } from "../../../data-access/users-db";
+import jwtInfo from '../../../auth-keys/jwt-info';
+import { sign } from '../../../helpers/jwt-handler';
 
 const auth = (module.exports = {});
-const bcrypt = require('bcryptjs');
+import { compareSync } from 'bcryptjs';
 
 
-auth.login = (req, res, next) => {    
+auth.login = (req, res, next) => {
     const { username,password } = req.body;
-    usersDb.findUser('username', username ).then(data =>{
+    findUser('username', username ).then(data =>{
         if(data){
-            user= data;
-            if (user && bcrypt.compareSync(password, user.hash)) {
+            const user= data;
+            if (user && compareSync(password, user.hash)) {
                 const { hash, ...userWithoutHash } = user;
 
-                const token = jwtHandler.sign({ userObj: userWithoutHash }, jwtInfo);
+                const token = sign({ userObj: userWithoutHash }, jwtInfo);
                 res.send( {
                     userObj: userWithoutHash,
                     token

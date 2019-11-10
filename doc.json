@@ -1,0 +1,83 @@
+{
+  "info": {
+    "title": "Hello World",
+    "version": "1.0.0",
+    "description": "A sample API"
+  },
+  "host": "http://localhost:3000",
+  "basePath": "/",
+  "swagger": "2.0",
+  "paths": {
+    "/users": {
+      "get": {
+        "description": "To Register use with IMDB Clone APO application"
+      }
+    },
+    "/login": {
+      "post": {
+        "description": "Login to the application",
+        "tags": [
+          "Users",
+          "auth"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/username"
+          },
+          {
+            "name": "password",
+            "description": "User's password.",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "login",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/auth"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "auth": {
+      "required": [
+        "username",
+        "password"
+      ],
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "responses": {},
+  "parameters": {},
+  "securityDefinitions": {},
+  "tags": [
+    {
+      "name": "Users",
+      "description": "User management and login"
+    },
+    {
+      "name": "auth",
+      "description": "auth"
+    },
+    {
+      "name": "Accounts",
+      "description": "Accounts"
+    }
+  ]
+}

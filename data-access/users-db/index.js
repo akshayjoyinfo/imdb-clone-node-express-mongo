@@ -2,7 +2,6 @@ const User = require('../../db/mongodb/models/user')
 const makeUser = require('../../models/user/index') // model
 const serialize = require('./serializer') // serializer custom to db
 const bcrypt = require('bcryptjs');
-const debug = require('debug')('imdb-clone-api:userDb')
 
 
 const listUsers = () => {
